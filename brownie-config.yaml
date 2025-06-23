@@ -1,0 +1,46 @@
+reports:
+  exclude_contracts:
+    - SafeMath
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.7.3
+compiler:
+  solc:
+    version: 0.8.23 # Specify the Solidity version
+    evm_version: london # Specify the EVM version (e.g., "istanbul", "berlin", "london")
+    remappings:
+      - "@layerzerolabs/lz-evm-oapp-v2=node_modules/@layerzerolabs/lz-evm-oapp-v2"
+      - "@openzeppelin/=node_modules/@openzeppelin/"
+      - "@onchain-id/solidity=node_modules/@onchain-id/solidity"
+    optimizer:
+      enabled: true # Enable the optimizer
+      runs: 200 # Number of optimization runs
+
+networks:
+  default: development # Set the default network
+  development:
+    gas_limit: auto # Automatically calculate gas limit
+    gas_price: 50 gwei # Set a default gas price
+  mainnet:
+    gas_price: auto # Automatically adjust gas price
+  rinkeby:
+    gas_price: 10 gwei # Set gas price for Rinkeby
+
+autofetch_sources: true # Automatically fetch source files for contract verification
+
+reports:
+  gas: true # Enable gas reporting for transactions
+
+console:
+  auto_revert: true # Automatically revert the chain state on error during testing
+
+wallets:
+  admin: ${ADMIN_PRIVATE_KEY}
+  creator: ${CREATOR_PRIVATE_KEY}
+  consumer: ${CONSUMER_PRIVATE_KEY}
+  iwan: ${IWANCAO_PRIVATE_KEY}
+  newbie: ${NEWBIE_PRIVATE_KEY}
+  newbie1: ${NEWBIE1_PRIVATE_KEY}
+  deployer: ${DEPLOYER_PRIVATE_KEY}
+  alice: ${ALICE_PRIVATE_KEY}
+  zhao: ${ZHAO_PRIVATE_KEY}
+  one: ${ONE_PRIVATE_KEY}
